@@ -266,45 +266,106 @@
       return Math.exp(-Math.pow(value - mean, 2) / (2 * Math.pow(stdDev, 2))) * 10;
     }
 </script>
-          <button id="toggle-rationale" type="button" onclick="toggleRationale()">How This Calculation Works</button>
-  
-  <div id="rationale">
-    <h2>Calculation Methodology</h2>
-    
-    <h3>Weighted Factors</h3>
-    <p>This score combines research-backed indicators of relationship commitment:</p>
-    <ul>
-      <li><strong>Time Together (20% weight)</strong>: Based on <a href="https://journals.sagepub.com/doi/10.1177/0265407517743075" target="_blank">Reis et al. (2017)</a> showing shared time correlates with commitment.</li>
-      <li><strong>Emotional Intimacy (25% weight)</strong>: Highest weight per Sternberg's Triangular Theory of Love.</li>
-      <li><strong>Future Plans (20% weight)</strong>: Rusbult's Investment Model shows future orientation predicts stability.</li>
-      <li><strong>Social Integration (15% weight)</strong>: Lehmiller's research on "social embedding."</li>
-      <li><strong>Sex Frequency (15% weight)</strong>: Diminishing returns after 2x/week (Dean et al., 2014).</li>
-    </ul>
+             <div id="rationale" style="display: block;">
+      <h2>Calculation Methodology</h2>
+      
+      <h3>Weighted Factors</h3>
+      <p>This score combines research-backed indicators of relationship commitment:</p>
+      <ul>
+        <li><strong>Time Together (20% weight)</strong>: Based on <a href="https://journals.sagepub.com/doi/10.1177/0265407517743075" target="_blank">Reis et al. (2017)</a> showing shared time correlates with commitment.</li>
+        <li><strong>Emotional Intimacy (25% weight)</strong>: Highest weight per Sternberg's Triangular Theory of Love.</li>
+        <li><strong>Future Plans (20% weight)</strong>: Rusbult's Investment Model shows future orientation predicts stability.</li>
+        <li><strong>Social Integration (15% weight)</strong>: Lehmiller's research on "social embedding."</li>
+        <li><strong>Sex Frequency (15% weight)</strong>: Diminishing returns after 2x/week (Dean et al., 2014).</li>
+      </ul>
 
-    <h3>Non-Linear Relationships</h3>
-    <ul>
-      <li><strong>Texting</strong>: Bell curve peaking at 20/day (too few = disinterest, too many = anxiety).</li>
-      <li><strong>Sex</strong>: Normalized to 0-4x/week (more doesn't linearly increase commitment).</li>
-      <li><strong>Conflict Resolution</strong>: Penalty only applies below 5/10 (Gottman's "Four Horsemen" theory).</li>
-    </ul>
+      <h3>Non-Linear Relationships</h3>
+      <ul>
+        <li><strong>Texting</strong>: Bell curve peaking at 20/day (too few = disinterest, too many = anxiety).</li>
+        <li><strong>Sex</strong>: Normalized to 0-4x/week (more doesn't linearly increase commitment).</li>
+        <li><strong>Conflict Resolution</strong>: Penalty only applies below 5/10 (Gottman's "Four Horsemen" theory).</li>
+      </ul>
 
-    <h3>Exclusivity Multiplier</h3>
-    <p>1.3x boost based on <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4850739/" target="_blank">Olmstead et al. (2018)</a> showing exclusivity increases commitment by ~30%.</p>
+      <h3>Exclusivity Multiplier</h3>
+      <p>1.3x boost based on <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4850739/" target="_blank">Olmstead et al. (2018)</a> showing exclusivity increases commitment by ~30%.</p>
 
-    <div class="citation">
-      <strong>Key Sources:</strong> Sternberg (1986), Rusbult (1980), Gottman (1993), Lehmiller (2015)
+      <div class="citation">
+        <strong>Key Sources:</strong> Sternberg (1986), Rusbult (1980), Gottman (1993), Lehmiller (2015)
+      </div>
     </div>
-  </div>
 
-  <script>
-    // (Keep previous calculateScore() and helper functions)
+    <script>
+    function calculateScore() {
+      // Get all input elements
+      const ageGroup = document.getElementById('age');
+      const timeTogether = document.getElementById('time');
+      const textsPerDay = document.getElementById('texts');
+      const sexFrequency = document.getElementById('sex');
+      const mealsTogether = document.getElementById('meals');
+      const metFamily = document.getElementById('family');
+      const socialMedia = document.getElementById('social');
+      const futurePlans = document.getElementById('future');
+      const emotionalIntimacy = document.getElementById('emotional');
+      const conflictResolution = document.getElementById('conflict');
+      const isExclusive = document.getElementById('exclusive');
 
-    function toggleRationale() {
-      const rationale = document.getElementById('rationale');
-      rationale.style.display = rationale.style.display === 'block' ? 'none' : 'block';
+      // Validate all fields
+      if (!ageGroup.value || !timeTogether.value || !textsPerDay.value || 
+          !sexFrequency.value || !mealsTogether.value || !metFamily.value || 
+          !socialMedia.value || !futurePlans.value || !emotionalIntimacy.value || 
+          !conflictResolution.value || !isExclusive.value) {
+        alert("Please fill out all fields!");
+        return;
+      }
+
+      // Convert values to numbers
+      const timeScore = 0.2 * normalize(parseFloat(timeTogether.value), 0, 40);
+      const textsScore = 0.1 * bellCurve(parseFloat(textsPerDay.value), 20, 10);
+      const sexScore = 0.15 * normalize(parseFloat(sexFrequency.value), 0, 4);
+      const mealsScore = 0.1 * normalize(parseFloat(mealsTogether.value), 0, 14);
+      const socialScore = 0.15 * (parseFloat(metFamily.value) + parseFloat(socialMedia.value));
+      const futureScore = 0.2 * parseFloat(futurePlans.value);
+      const emoScore = 0.25 * parseFloat(emotionalIntimacy.value);
+      const conflictPenalty = (parseFloat(conflictResolution.value) < 5) ? 
+                             -0.1 * (5 - parseFloat(conflictResolution.value)) : 0;
+      const exclusivityMultiplier = parseFloat(isExclusive.value);
+
+      // Calculate total score
+      let totalScore = (timeScore + textsScore + sexScore + mealsScore + 
+                       socialScore + futureScore + emoScore + conflictPenalty) * 
+                       exclusivityMultiplier;
+      totalScore = Math.min(10, Math.max(0, totalScore)); // Clamp to 0-10
+
+      // Display result
+      const resultDiv = document.getElementById('result');
+      resultDiv.style.display = 'block';
+      resultDiv.innerHTML = `<strong>Relationship Score: ${totalScore.toFixed(1)}/10</strong><br>`;
+
+      // Classify result
+      if (totalScore >= 7) {
+        resultDiv.innerHTML += "Status: <strong>Serious (Hooked/Girlfriend)</strong>";
+        resultDiv.className = 'serious';
+      } else if (totalScore >= 4) {
+        resultDiv.innerHTML += "Status: <strong>Dating</strong>";
+        resultDiv.className = 'dating';
+      } else {
+        resultDiv.innerHTML += "Status: <strong>Casual</strong>";
+        resultDiv.className = 'casual';
+      }
     }
+
+    // Helper functions (keep these the same)
+    function normalize(value, min, max) {
+      return ((value - min) / (max - min)) * 10;
+    }
+
+    function bellCurve(value, mean, stdDev) {
+      return Math.exp(-Math.pow(value - mean, 2) / (2 * Math.pow(stdDev, 2))) * 10;
+    }
+    </script>
   </body>
 </html>
+
 
 
 
