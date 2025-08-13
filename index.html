@@ -265,7 +265,8 @@
     function bellCurve(value, mean, stdDev) {
       return Math.exp(-Math.pow(value - mean, 2) / (2 * Math.pow(stdDev, 2))) * 10;
     }
-      <button id="toggle-rationale" type="button" onclick="toggleRationale()">How This Calculation Works</button>
+</script>
+          <button id="toggle-rationale" type="button" onclick="toggleRationale()">How This Calculation Works</button>
   
   <div id="rationale">
     <h2>Calculation Methodology</h2>
@@ -302,8 +303,8 @@
       const rationale = document.getElementById('rationale');
       rationale.style.display = rationale.style.display === 'block' ? 'none' : 'block';
     }
-</script>
   </body>
 </html>
+
 
 
