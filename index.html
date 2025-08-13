@@ -58,27 +58,22 @@
       .serious {
         background-color: #d4edda;
       }
-        #rationale {
-      margin-top: 30px;
-      padding: 15px;
-      background-color: #f0f0f0;
-      border-radius: 5px;
-      display: none;
-    }
-    #toggle-rationale {
-      background-color: #6b6bff;
-      margin-top: 20px;
-    }
-    .citation {
-      font-size: 14px;
-      color: #555;
-      margin-top: 10px;
-    }
-    h2 {
-      color: #ff6b6b;
-      border-bottom: 1px solid #ddd;
-      padding-bottom: 5px;
-    }
+      #rationale {
+        margin-top: 30px;
+        padding: 15px;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+      }
+      .citation {
+        font-size: 14px;
+        color: #555;
+        margin-top: 10px;
+      }
+      h2 {
+        color: #ff6b6b;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 5px;
+      }
     </style>
   </head>
   <body>
@@ -149,9 +144,7 @@
       </div>
 
       <div class="question">
-        <label for="social"
-          >Do you post about each other on social media?</label
-        >
+        <label for="social">Do you post about each other on social media?</label>
         <select id="social" required>
           <option value="">Select...</option>
           <option value="0">Never</option>
@@ -161,9 +154,7 @@
       </div>
 
       <div class="question">
-        <label for="future"
-          >Have you discussed future plans (e.g., moving in, marriage)?</label
-        >
+        <label for="future">Have you discussed future plans (e.g., moving in, marriage)?</label>
         <select id="future" required>
           <option value="">Select...</option>
           <option value="0">No</option>
@@ -197,76 +188,7 @@
 
     <div id="result"></div>
 
-    <script>
-    function calculateScore() {
-      // Get all input elements
-      const ageGroup = document.getElementById('age');
-      const timeTogether = document.getElementById('time');
-      const textsPerDay = document.getElementById('texts');
-      const sexFrequency = document.getElementById('sex');
-      const mealsTogether = document.getElementById('meals');
-      const metFamily = document.getElementById('family');
-      const socialMedia = document.getElementById('social');
-      const futurePlans = document.getElementById('future');
-      const emotionalIntimacy = document.getElementById('emotional');
-      const conflictResolution = document.getElementById('conflict');
-      const isExclusive = document.getElementById('exclusive');
-
-      // Validate all fields
-      if (!ageGroup.value || !timeTogether.value || !textsPerDay.value || 
-          !sexFrequency.value || !mealsTogether.value || !metFamily.value || 
-          !socialMedia.value || !futurePlans.value || !emotionalIntimacy.value || 
-          !conflictResolution.value || !isExclusive.value) {
-        alert("Please fill out all fields!");
-        return;
-      }
-
-      // Convert values to numbers
-      const timeScore = 0.2 * normalize(parseFloat(timeTogether.value), 0, 40);
-      const textsScore = 0.1 * bellCurve(parseFloat(textsPerDay.value), 20, 10);
-      const sexScore = 0.15 * normalize(parseFloat(sexFrequency.value), 0, 4);
-      const mealsScore = 0.1 * normalize(parseFloat(mealsTogether.value), 0, 14);
-      const socialScore = 0.15 * (parseFloat(metFamily.value) + parseFloat(socialMedia.value));
-      const futureScore = 0.2 * parseFloat(futurePlans.value);
-      const emoScore = 0.25 * parseFloat(emotionalIntimacy.value);
-      const conflictPenalty = (parseFloat(conflictResolution.value) < 5) ? 
-                             -0.1 * (5 - parseFloat(conflictResolution.value)) : 0;
-      const exclusivityMultiplier = parseFloat(isExclusive.value);
-
-      // Calculate total score
-      let totalScore = (timeScore + textsScore + sexScore + mealsScore + 
-                       socialScore + futureScore + emoScore + conflictPenalty) * 
-                       exclusivityMultiplier;
-      totalScore = Math.min(10, Math.max(0, totalScore)); // Clamp to 0-10
-
-      // Display result
-      const resultDiv = document.getElementById('result');
-      resultDiv.style.display = 'block';
-      resultDiv.innerHTML = `<strong>Relationship Score: ${totalScore.toFixed(1)}/10</strong><br>`;
-
-      // Classify result
-      if (totalScore >= 7) {
-        resultDiv.innerHTML += "Status: <strong>Serious (Hooked/Girlfriend)</strong>";
-        resultDiv.className = 'serious';
-      } else if (totalScore >= 4) {
-        resultDiv.innerHTML += "Status: <strong>Dating</strong>";
-        resultDiv.className = 'dating';
-      } else {
-        resultDiv.innerHTML += "Status: <strong>Casual</strong>";
-        resultDiv.className = 'casual';
-      }
-    }
-
-    // Helper functions (keep these the same)
-    function normalize(value, min, max) {
-      return ((value - min) / (max - min)) * 10;
-    }
-
-    function bellCurve(value, mean, stdDev) {
-      return Math.exp(-Math.pow(value - mean, 2) / (2 * Math.pow(stdDev, 2))) * 10;
-    }
-</script>
-             <div id="rationale" style="display: block;">
+    <div id="rationale">
       <h2>Calculation Methodology</h2>
       
       <h3>Weighted Factors</h3>
@@ -295,77 +217,73 @@
     </div>
 
     <script>
-    function calculateScore() {
-      // Get all input elements
-      const ageGroup = document.getElementById('age');
-      const timeTogether = document.getElementById('time');
-      const textsPerDay = document.getElementById('texts');
-      const sexFrequency = document.getElementById('sex');
-      const mealsTogether = document.getElementById('meals');
-      const metFamily = document.getElementById('family');
-      const socialMedia = document.getElementById('social');
-      const futurePlans = document.getElementById('future');
-      const emotionalIntimacy = document.getElementById('emotional');
-      const conflictResolution = document.getElementById('conflict');
-      const isExclusive = document.getElementById('exclusive');
+      function calculateScore() {
+        // Get all input elements
+        const ageGroup = document.getElementById('age');
+        const timeTogether = document.getElementById('time');
+        const textsPerDay = document.getElementById('texts');
+        const sexFrequency = document.getElementById('sex');
+        const mealsTogether = document.getElementById('meals');
+        const metFamily = document.getElementById('family');
+        const socialMedia = document.getElementById('social');
+        const futurePlans = document.getElementById('future');
+        const emotionalIntimacy = document.getElementById('emotional');
+        const conflictResolution = document.getElementById('conflict');
+        const isExclusive = document.getElementById('exclusive');
 
-      // Validate all fields
-      if (!ageGroup.value || !timeTogether.value || !textsPerDay.value || 
-          !sexFrequency.value || !mealsTogether.value || !metFamily.value || 
-          !socialMedia.value || !futurePlans.value || !emotionalIntimacy.value || 
-          !conflictResolution.value || !isExclusive.value) {
-        alert("Please fill out all fields!");
-        return;
+        // Validate all fields
+        if (!ageGroup.value || !timeTogether.value || !textsPerDay.value || 
+            !sexFrequency.value || !mealsTogether.value || !metFamily.value || 
+            !socialMedia.value || !futurePlans.value || !emotionalIntimacy.value || 
+            !conflictResolution.value || !isExclusive.value) {
+          alert("Please fill out all fields!");
+          return;
+        }
+
+        // Convert values to numbers
+        const timeScore = 0.2 * normalize(parseFloat(timeTogether.value), 0, 40);
+        const textsScore = 0.1 * bellCurve(parseFloat(textsPerDay.value), 20, 10);
+        const sexScore = 0.15 * normalize(parseFloat(sexFrequency.value), 0, 4);
+        const mealsScore = 0.1 * normalize(parseFloat(mealsTogether.value), 0, 14);
+        const socialScore = 0.15 * (parseFloat(metFamily.value) + parseFloat(socialMedia.value));
+        const futureScore = 0.2 * parseFloat(futurePlans.value);
+        const emoScore = 0.25 * parseFloat(emotionalIntimacy.value);
+        const conflictPenalty = (parseFloat(conflictResolution.value) < 5) ? 
+                               -0.1 * (5 - parseFloat(conflictResolution.value)) : 0;
+        const exclusivityMultiplier = parseFloat(isExclusive.value);
+
+        // Calculate total score
+        let totalScore = (timeScore + textsScore + sexScore + mealsScore + 
+                         socialScore + futureScore + emoScore + conflictPenalty) * 
+                         exclusivityMultiplier;
+        totalScore = Math.min(10, Math.max(0, totalScore)); // Clamp to 0-10
+
+        // Display result
+        const resultDiv = document.getElementById('result');
+        resultDiv.style.display = 'block';
+        resultDiv.innerHTML = `<strong>Relationship Score: ${totalScore.toFixed(1)}/10</strong><br>`;
+
+        // Classify result
+        if (totalScore >= 7) {
+          resultDiv.innerHTML += "Status: <strong>Serious (Hooked/Girlfriend)</strong>";
+          resultDiv.className = 'serious';
+        } else if (totalScore >= 4) {
+          resultDiv.innerHTML += "Status: <strong>Dating</strong>";
+          resultDiv.className = 'dating';
+        } else {
+          resultDiv.innerHTML += "Status: <strong>Casual</strong>";
+          resultDiv.className = 'casual';
+        }
       }
 
-      // Convert values to numbers
-      const timeScore = 0.2 * normalize(parseFloat(timeTogether.value), 0, 40);
-      const textsScore = 0.1 * bellCurve(parseFloat(textsPerDay.value), 20, 10);
-      const sexScore = 0.15 * normalize(parseFloat(sexFrequency.value), 0, 4);
-      const mealsScore = 0.1 * normalize(parseFloat(mealsTogether.value), 0, 14);
-      const socialScore = 0.15 * (parseFloat(metFamily.value) + parseFloat(socialMedia.value));
-      const futureScore = 0.2 * parseFloat(futurePlans.value);
-      const emoScore = 0.25 * parseFloat(emotionalIntimacy.value);
-      const conflictPenalty = (parseFloat(conflictResolution.value) < 5) ? 
-                             -0.1 * (5 - parseFloat(conflictResolution.value)) : 0;
-      const exclusivityMultiplier = parseFloat(isExclusive.value);
-
-      // Calculate total score
-      let totalScore = (timeScore + textsScore + sexScore + mealsScore + 
-                       socialScore + futureScore + emoScore + conflictPenalty) * 
-                       exclusivityMultiplier;
-      totalScore = Math.min(10, Math.max(0, totalScore)); // Clamp to 0-10
-
-      // Display result
-      const resultDiv = document.getElementById('result');
-      resultDiv.style.display = 'block';
-      resultDiv.innerHTML = `<strong>Relationship Score: ${totalScore.toFixed(1)}/10</strong><br>`;
-
-      // Classify result
-      if (totalScore >= 7) {
-        resultDiv.innerHTML += "Status: <strong>Serious (Hooked/Girlfriend)</strong>";
-        resultDiv.className = 'serious';
-      } else if (totalScore >= 4) {
-        resultDiv.innerHTML += "Status: <strong>Dating</strong>";
-        resultDiv.className = 'dating';
-      } else {
-        resultDiv.innerHTML += "Status: <strong>Casual</strong>";
-        resultDiv.className = 'casual';
+      // Helper functions
+      function normalize(value, min, max) {
+        return ((value - min) / (max - min)) * 10;
       }
-    }
 
-    // Helper functions (keep these the same)
-    function normalize(value, min, max) {
-      return ((value - min) / (max - min)) * 10;
-    }
-
-    function bellCurve(value, mean, stdDev) {
-      return Math.exp(-Math.pow(value - mean, 2) / (2 * Math.pow(stdDev, 2))) * 10;
-    }
+      function bellCurve(value, mean, stdDev) {
+        return Math.exp(-Math.pow(value - mean, 2) / (2 * Math.pow(stdDev, 2))) * 10;
+      }
     </script>
   </body>
 </html>
-
-
-
-
