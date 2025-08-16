@@ -1,0 +1,19 @@
+/images/
+├── acquaintance.png
+├── casual.png
+├── developing.png
+├── committed.png
+├── serious.png
+├── lifepartners.png
+├── stalker.png
+├── leading.png
+├── fwb.png
+├── unavailable.png
+├── love-bombing.png
+├── breadcrumbing.png
+├── trauma-bond.png
+├── work-spouse.png
+├── anxious-avoidant.png
+├── ghosting.png
+├── burnout.png
+└── social-climber.png
