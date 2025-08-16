@@ -551,32 +551,52 @@
         ];
 
       function analyzeRelationship() {
+          // form validation 
+          const requiredFields = document.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value) {
+                    field.style.borderColor = 'red';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+            
+            if (!isValid) {
+                alert('Please fill all required fields');
+                return;
+            }
     // Gather all form values
     const formValues = {
-        userGender: document.getElementById("userGender").value,
-        partnerGender: document.getElementById("partnerGender").value,
-        timeTogether: parseFloat(document.getElementById("timeTogether").value),
-        textsPerDay: parseFloat(document.getElementById("textsPerDay").value),
-        sexFrequency: parseFloat(document.getElementById("sexFrequency").value),
-        initiator: document.getElementById("initiator").value,
-        partnerResponse: document.getElementById("partnerResponse").value,
-        socialMedia: document.getElementById("socialMedia").value,
-        emotionalIntimacy: parseFloat(document.getElementById("emotionalIntimacy").value),
-        futurePlans: parseFloat(document.getElementById("futurePlans").value),
-        exclusive: parseFloat(document.getElementById("exclusive").value),
-        conflictFrequency: parseInt(document.getElementById("conflictFrequency").value),
-        breakupHistory: parseInt(document.getElementById("breakupHistory").value),
-        livingTogether: parseInt(document.getElementById("livingTogether").value),
-        statusDisparity: parseInt(document.getElementById("statusDisparity").value),
+                userGender: document.getElementById("userGender").value,
+                partnerGender: document.getElementById("partnerGender").value,
+                timeTogether: parseFloat(document.getElementById("timeTogether").value),
+                textsPerDay: parseFloat(document.getElementById("textsPerDay").value),
+                sexFrequency: parseFloat(document.getElementById("sexFrequency").value),
+                initiator: document.getElementById("initiator").value,
+                partnerResponse: document.getElementById("partnerResponse").value,
+                socialMedia: document.getElementById("socialMedia").value,
+                emotionalIntimacy: parseFloat(document.getElementById("emotionalIntimacy").value),
+                futurePlans: parseFloat(document.getElementById("futurePlans").value),
+                exclusive: parseFloat(document.getElementById("exclusive").value),
+                conflictFrequency: parseInt(document.getElementById("conflictFrequency").value),
+                breakupHistory: parseInt(document.getElementById("breakupHistory").value),
+                livingTogether: parseInt(document.getElementById("livingTogether").value),
+                statusDisparity: parseInt(document.getElementById("statusDisparity").value),
+                relationshipDuration: parseInt(document.getElementById("relationshipDuration").value),
         
         // Derived fields for special cases
       context: document.getElementById("relationshipContext")?.value || "personal",
-    exclusivitySpeed: parseInt(document.getElementById("exclusivitySpeed")?.value) || 5,
-    sexRoutine: parseInt(document.getElementById("sexRoutine")?.value) || 0,
-    socialMediaShowcasing: parseInt(document.getElementById("socialMediaShowcasing")?.value) ||
-        responseRate: calculateResponseRate(document.getElementById("partnerResponse").value),
-        sexFrequencyDecline: 0, // You would track this over time
-        recentIntimacy: formValues.emotionalIntimacy > 5 ? 1 : 0
+                exclusivitySpeed: parseInt(document.getElementById("exclusivitySpeed")?.value) || 5,
+                sexRoutine: parseInt(document.getElementById("sexRoutine")?.value) || 0,
+                socialMediaShowcasing: parseInt(document.getElementById("socialMediaShowcasing")?.value) || 5,
+                
+                // Calculated fields
+                responseRate: calculateResponseRate(document.getElementById("partnerResponse").value),
+                sexFrequencyDecline: calculateFrequencyDecline(),
+                recentIntimacy: parseFloat(document.getElementById("emotionalIntimacy").value) > 5 ? 1 : 0
       
       
     };
@@ -729,3 +749,4 @@ function calculateFrequencyDecline() {
     </script>
 </body>
 </html>
+
