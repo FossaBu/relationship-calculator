@@ -162,7 +162,8 @@
             <label for="timeTogether">Hours spent together per week:</label>
             <select id="timeTogether" required>
                 <option value="">Select...</option>
-                <option value="2">0-4</option>
+                <option value="0">0</option>
+                <option value="2">1-4</option>
                 <option value="6">5-10</option>
                 <option value="12">11-20</option>
                 <option value="25">21+</option>
@@ -177,7 +178,7 @@
                 <option value="60">51+</option>
             </select>
             
-            <label for="sexFrequency">Frequency of intimacy per week:</label>
+            <label for="sexFrequency">Frequency of sex per week:</label>
             <select id="sexFrequency" required>
                 <option value="">Select...</option>
                 <option value="0">Never</option>
@@ -194,9 +195,11 @@
             <label for="initiator">Who usually initiates contact?</label>
             <select id="initiator" required>
                 <option value="">Select...</option>
+                <option value="always_self">Always me</option>
                 <option value="self">Mostly me</option>
-                <option value="partner">Mostly them</option>
                 <option value="equal">About equal</option>
+                <option value="partner">Mostly them</option>
+                <option value="always_partner">Always them</option>
             </select>
             
             <label for="partnerResponse">They respond to texts:</label>
@@ -239,70 +242,71 @@
                 <option value="1">Yes</option>
             </select>
         </div>
-      <div class="question">
-    <h3>Additional Relationship Factors</h3>
-    
-    <label for="conflictFrequency">Rate frequency of serious conflicts (1-10):</label>
-    <input type="number" id="conflictFrequency" min="1" max="10" required>
-    
-    <label for="breakupHistory">Number of breakups/makeups:</label>
-    <select id="breakupHistory" required>
-        <option value="">Select...</option>
-        <option value="0">Never</option>
-        <option value="1">1 time</option>
-        <option value="2">2-3 times</option>
-        <option value="4">4+ times</option>
-    </select>
-    
-    <label for="livingTogether">Are you living together?</label>
-    <select id="livingTogether" required>
-        <option value="">Select...</option>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-    </select>
-    
-    <label for="statusDisparity">Is there a significant status difference (education/income)?</label>
-    <select id="statusDisparity" required>
-        <option value="">Select...</option>
-        <option value="0">No</option>
-        <option value="1">Yes</option>
-    </select>
-    
-    <label for="relationshipDuration">Relationship duration (months):</label>
-    <input type="number" id="relationshipDuration" min="1" required>
-</div>
-      <div class="question">
-    <h3>Additional Relationship Context</h3>
-    
-    <label for="relationshipContext">Primary relationship context:</label>
-    <select id="relationshipContext" required>
-        <option value="">Select...</option>
-        <option value="work">Work/Professional</option>
-        <option value="social">Social/Friends</option>
-        <option value="personal">Personal/Dating</option>
-    </select>
-    
-    <label for="exclusivitySpeed">How quickly did you become exclusive?</label>
-    <select id="exclusivitySpeed">
-        <option value="0">Not exclusive</option>
-        <option value="3">Slow (6+ months)</option>
-        <option value="7">Moderate (1-6 months)</option>
-        <option value="10">Fast (<1 month)</option>
-    </select>
-    
-    <label for="sexRoutine">Is intimacy predictable/routine?</label>
-    <select id="sexRoutine">
-        <option value="0">No/Varies</option>
-        <option value="1">Yes</option>
-    </select>
-    
-    <label for="socialMediaShowcasing">How much is your relationship showcased online?</label>
-    <select id="socialMediaShowcasing">
-        <option value="0">Not at all</option>
-        <option value="5">Somewhat</option>
-        <option value="10">Extensively</option>
-    </select>
-</div>
+        <div class="question">
+            <h3>Additional Relationship Factors</h3>
+            
+            <label for="conflictFrequency">Rate frequency of serious conflicts (1-10):</label>
+            <input type="number" id="conflictFrequency" min="1" max="10" required>
+            
+            <label for="breakupHistory">Number of breakups/makeups:</label>
+            <select id="breakupHistory" required>
+                <option value="">Select...</option>
+                <option value="0">Never</option>
+                <option value="1">1 time</option>
+                <option value="2">2-3 times</option>
+                <option value="4">4+ times</option>
+            </select>
+            
+            <label for="livingTogether">Are you living together?</label>
+            <select id="livingTogether" required>
+                <option value="">Select...</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+            
+            <label for="statusDisparity">Is there a significant status difference (education/income)?</label>
+            <select id="statusDisparity" required>
+                <option value="">Select...</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+            </select>
+            
+            <label for="relationshipDuration">Relationship duration (months):</label>
+            <input type="number" id="relationshipDuration" min="1" required>
+        </div>
+        <div class="question">
+            <h3>Additional Relationship Context</h3>
+            
+            <label for="relationshipContext">Primary relationship context:</label>
+            <select id="relationshipContext" required>
+                <option value="">Select...</option>
+                <option value="work">Work/Professional</option>
+                <option value="social">Social/Friends</option>
+                <option value="personal">Personal/Dating</option>
+            </select>
+            
+            <label for="exclusivitySpeed">How quickly did you become exclusive?</label>
+            <select id="exclusivitySpeed">
+                <option value="0">Not exclusive</option>
+                <option value="3">Slow (6+ months)</option>
+                <option value="7">Moderate (1-6 months)</option>
+                <option value="10">Fast (<1 month)</option>
+            </select>
+            
+            <label for="sexRoutine">Is sex predictable/routine?</label>
+            <select id="sexRoutine">
+                <option value="0">No sex</option>
+                <option value="1">No/Varies</option>
+                <option value="2">Yes</option>
+            </select>
+            
+            <label for="socialMediaShowcasing">How much is your relationship showcased online?</label>
+            <select id="socialMediaShowcasing">
+                <option value="0">Not at all</option>
+                <option value="5">Somewhat</option>
+                <option value="10">Extensively</option>
+            </select>
+        </div>
         
         <button type="button" onclick="analyzeRelationship()">Analyze Relationship</button>
     </form>
@@ -334,7 +338,7 @@
     </div>
 
     <script>
-      let currentResearch = ''; // Stores the current research citation
+        let currentResearch = ''; // Stores the current research citation
         // Relationship label definitions
         const relationshipLabels = [
             {
@@ -383,35 +387,34 @@
 
         // Special case definitions
         const specialCases = [
-          {
+            {
                 name: "Stalker Pattern Warning",
                 image: "/images/stalker.png",
                 conditions: [
-                    { field: "initiator", op: "==", value: "self" },
+                    { field: "initiator", op: "==", value: "always_self" },
                     { field: "partnerResponse", op: "==", value: "slow" },
                     { field: "emotionalIntimacy", op: ">", value: 6 },
                     { field: "timeTogether", op: "<", value: 5 },
                     { field: "sexFrequency", op: "<", value: 0.5 }
                 ],
-                explanation: "Your high initiation with their minimal response, despite your strong emotional investment, matches Mullen's (2009) criteria for unreciprocated pursuit behavior. This pattern can indicate unhealthy attachment dynamics.",
+                explanation: "Your constant initiation with their minimal response, despite your strong emotional investment, matches Mullen's (2009) criteria for unreciprocated pursuit behavior. This pattern indicates potentially unhealthy attachment dynamics.",
                 research: "Mullen et al. (2009). Study of Stalking Behaviors. British Journal of Psychiatry, 194, 49-54."
             },
             
-            // 2. Leading Them On
             {
                 name: "Leading Them On",
                 image: "/images/leading.png",
                 conditions: [
+                    { field: "initiator", op: "==", value: "always_partner" },
                     { field: "timeTogether", op: ">", value: 10 },
                     { field: "emotionalIntimacy", op: ">", value: 7 },
                     { field: "sexFrequency", op: "<", value: 0.5 },
                     { field: "futurePlans", op: "<", value: 3 }
                 ],
-                explanation: "Your high time investment and emotional intimacy without physical or future commitment aligns with Mongeau's (2013) 'relational ambiguity' pattern that can create false expectations.",
+                explanation: "Their constant initiation with your high emotional investment but lack of physical or future commitment aligns with Mongeau's (2013) 'relational ambiguity' pattern that creates false expectations.",
                 research: "Mongeau et al. (2013). Sexual Expectations in Dating Relationships. Personal Relationships, 20(1), 36-50."
             },
             
-            // 3. Friends with Benefits
             {
                 name: "Friends with Benefits",
                 image: "/images/fwb.png",
@@ -425,7 +428,6 @@
                 research: "Hughes et al. (2005). Friends with Benefits Relationships. Journal of Social and Personal Relationships, 22(5), 639-663."
             },
             
-            // 4. Emotionally Unavailable Partner
             {
                 name: "Emotionally Unavailable Partner",
                 image: "/images/unavailable.png",
@@ -437,7 +439,7 @@
                 explanation: "Your partner's high time investment without emotional depth or future orientation reflects Johnson's (2008) 'avoidant attachment' markers, creating relationship stagnation.",
                 research: "Johnson, S. (2008). Hold Me Tight: Seven Conversations for a Lifetime of Love. Little, Brown."
             },  
-          {
+            {
                 name: "Love Bombing",
                 image: "/images/love-bombing.png",
                 conditions: [
@@ -459,7 +461,6 @@
                 explanation: "The intermittent attention with no digital acknowledgment aligns with Freedman's (2019) concept of 'attention rationing' to maintain interest without commitment.",
                 research: "Freedman, G. (2019). Digital Dating Behaviors. Communication Research, 46(5), 601-620."
             },
-          // 7. Trauma Bonded
             {
                 name: "Trauma Bonded Relationship",
                 image: "/images/trauma-bond.png",
@@ -472,7 +473,6 @@
                 research: "Dutton & Painter (1993). Traumatic Bonding in Abusive Relationships. Violence and Victims, 8(2), 105-120."
             },
             
-            // 8. Work Spouse
             {
                 name: "Work Spouse Dynamic",
                 image: "/images/work-spouse.png",
@@ -486,7 +486,6 @@
                 research: "McBride (2020). Platonic Intimacy in Workplace Relationships. Journal of Social Psychology, 160(3), 213-228."
             },
             
-            // 9. Cohabitation Trap
             {
                 name: "Cohabitation Trap",
                 image: "/images/cohab-trap.png",
@@ -509,7 +508,6 @@
                 explanation: "Your high initiation with their inconsistent responses creates what Levine (2010) calls the 'pursuit-distance cycle' characteristic of insecure attachment pairings.",
                 research: "Levine & Heller (2010). Attached: The New Science of Adult Attachment. Penguin Books."
             },
-            // 11. Digital Ghosting
             {
                 name: "Digital Ghosting",
                 image: "/images/ghosting.png",
@@ -523,20 +521,18 @@
                 research: "LeFebvre (2022). Digital Disengagement in Romantic Relationships. Communication Studies, 73(2), 1-20."
             },
             
-            // 12. Romantic Burnout
             {
                 name: "Romantic Burnout",
                 image: "/images/burnout.png",
                 conditions: [
                     { field: "relationshipDuration", op: ">", value: 1095 }, // 3+ years
                     { field: "conflictFrequency", op: "<", value: 3 },
-                    { field: "sexRoutine", op: "==", value: 1 }
+                    { field: "sexRoutine", op: "==", value: 2 }
                 ],
                 explanation: "Your long-term relationship's low conflict but highly routine patterns align with Pines' (1996) burnout model where stability replaces vitality.",
                 research: "Pines (1996). Couple Burnout in Long-Term Relationships. Journal of Marriage and Family, 58(1), 1-12."
             },
             
-            // 13. Social Climber
             {
                 name: "Social Climber Alert",
                 image: "/images/social-climber.png",
@@ -550,9 +546,9 @@
             }
         ];
 
-      function analyzeRelationship() {
-          // form validation 
-          const requiredFields = document.querySelectorAll('[required]');
+        function analyzeRelationship() {
+            // form validation 
+            const requiredFields = document.querySelectorAll('[required]');
             let isValid = true;
             
             requiredFields.forEach(field => {
@@ -568,8 +564,9 @@
                 alert('Please fill all required fields');
                 return;
             }
-    // Gather all form values
-    const formValues = {
+
+            // Gather all form values
+            const formValues = {
                 userGender: document.getElementById("userGender").value,
                 partnerGender: document.getElementById("partnerGender").value,
                 timeTogether: parseFloat(document.getElementById("timeTogether").value),
@@ -586,167 +583,197 @@
                 livingTogether: parseInt(document.getElementById("livingTogether").value),
                 statusDisparity: parseInt(document.getElementById("statusDisparity").value),
                 relationshipDuration: parseInt(document.getElementById("relationshipDuration").value),
-        
-        // Derived fields for special cases
-      context: document.getElementById("relationshipContext")?.value || "personal",
+                context: document.getElementById("relationshipContext")?.value || "personal",
                 exclusivitySpeed: parseInt(document.getElementById("exclusivitySpeed")?.value) || 5,
                 sexRoutine: parseInt(document.getElementById("sexRoutine")?.value) || 0,
                 socialMediaShowcasing: parseInt(document.getElementById("socialMediaShowcasing")?.value) || 5,
-                
-                // Calculated fields
                 responseRate: calculateResponseRate(document.getElementById("partnerResponse").value),
                 sexFrequencyDecline: calculateFrequencyDecline(),
-                recentIntimacy: parseFloat(document.getElementById("emotionalIntimacy").value) > 5 ? 1 : 0
-      
-      
-    };
+                recentIntimacy: parseFloat(document.getElementById("emotionalIntimacy").value > 5 ? 1 : 0
+            };
 
-    // Calculate base score with research-backed weights
-    let score = (
-        (formValues.timeTogether * 0.15) +
-        (formValues.textsPerDay * 0.1) +
-        (formValues.sexFrequency * 0.15) +
-        (formValues.emotionalIntimacy * 0.25) +
-        (formValues.futurePlans * 0.2) +
-        (formValues.exclusive * 0.15)
-    );
-
-    // Enhanced gender dynamics adjustments
-    if (formValues.userGender === "male" && formValues.partnerGender === "female") {
-        // Baumeister & Vohs (2004) adjustments
-        if (formValues.initiator === "self") score *= 0.9; // Male pursuing reduces score slightly
-        if (formValues.partnerResponse === "fast") score *= 1.1; // Female responsiveness increases
-    } 
-    else if (formValues.userGender === "female" && formValues.partnerGender === "male") {
-        // Jonason (2015) mate preference adjustments
-        if (formValues.initiator === "partner") score *= 1.05;
-    }
-    // Same-gender relationship adjustments (Gottman 2012)
-    else {
-        if (formValues.initiator === "equal") score *= 1.1;
-    }
-
-    // Special penalty/bonus factors
-    if (formValues.conflictFrequency > 7) score -= 0.5; // High conflict penalty
-    if (formValues.livingTogether === 1) score += 0.3; // Cohabitation bonus
-
-    // Cap score at 10
-    score = Math.min(10, Math.max(0, Number(score.toFixed(2))));
-
-    // Determine main relationship label
-    const mainLabel = relationshipLabels.find(label => 
-        score >= label.minScore && score < label.maxScore
-    );
-
-    // Display main result
-    document.getElementById("statusLabel").textContent = mainLabel.label;
-    document.getElementById("mainLabelImage").src = mainLabel.image;
-    document.getElementById("mainLabelImage").alt = mainLabel.label;
-    
-    // Enhanced personalized explanation
-    let explanation = mainLabel.explanation;
-    explanation += `<p>Your score of <strong>${score}/10</strong> reflects:</p><ul>`;
-    
-    if (formValues.timeTogether < 5) {
-        explanation += `<li>Limited shared time (${formValues.timeTogether} hrs/week) - below bonding threshold</li>`;
-    } else if (formValues.timeTogether > 20) {
-        explanation += `<li>High shared time (${formValues.timeTogether} hrs/week) - strong commitment signal</li>`;
-    }
-    
-    if (formValues.futurePlans < 3) {
-        explanation += `<li>Minimal future planning - indicates short-term orientation</li>`;
-    } else if (formValues.futurePlans > 7) {
-        explanation += `<li>Concrete future plans - strong long-term commitment marker</li>`;
-    }
-    
-    if (formValues.emotionalIntimacy > 7) {
-        explanation += `<li>Strong emotional connection (${formValues.emotionalIntimacy}/10) - deep bonding present</li>`;
-    }
-    
-    explanation += `</ul>`;
-    
-    document.getElementById("statusExplanation").innerHTML = explanation;
-
-    // Check for special cases (now with all 12 patterns)
-    const detectedCases = specialCases.filter(caseItem => {
-        return caseItem.conditions.every(condition => {
-            const value = formValues[condition.field];
-            switch (condition.op) {
-                case ">": return value > condition.value;
-                case "<": return value < condition.value;
-                case "==": return value == condition.value;
-                case ">=": return value >= condition.value;
-                default: return false;
+            // Adjust sexRoutine if sexFrequency is 0
+            if (formValues.sexFrequency === 0) {
+                formValues.sexRoutine = 0; // Force "No sex" if frequency is never
             }
-        });
-    });
 
-    // Display all detected special cases
-    if (detectedCases.length > 0) {
-        const specialCase = detectedCases[0]; // Showing first match (can extend to show all)
-        document.getElementById("specialCaseLabel").textContent = specialCase.name;
-        document.getElementById("specialCaseImage").src = specialCase.image;
-        document.getElementById("specialCaseImage").alt = specialCase.name;
-        
-        let caseExplanation = specialCase.explanation;
-        caseExplanation += `<p><strong>Pattern Indicators:</strong></p><ul>`;
-        
-        // Dynamic trigger explanations
-        specialCase.conditions.forEach(cond => {
-            const value = formValues[cond.field];
-            let desc = '';
+            // Calculate base score with research-backed weights
+            let score = (
+                (formValues.timeTogether * 0.15) +
+                (formValues.textsPerDay * 0.1) +
+                (formValues.sexFrequency * 0.15) +
+                (formValues.emotionalIntimacy * 0.25) +
+                (formValues.futurePlans * 0.2) +
+                (formValues.exclusive * 0.15)
+            );
+
+            // Adjust weights based on directional behaviors
+            // Texting weight adjustment based on initiation pattern
+            if (formValues.initiator === "always_self" || formValues.initiator === "always_partner") {
+                // If contact is always initiated by one party, texting counts for much less
+                score -= (formValues.textsPerDay * 0.08); // Reduce texting contribution
+            } else if (formValues.initiator !== "equal") {
+                // If mostly one party, reduce texting weight by half
+                score -= (formValues.textsPerDay * 0.05);
+            }
+
+            // Emotional intimacy adjustment if no time spent together
+            if (formValues.timeTogether === 0 && formValues.emotionalIntimacy > 4) {
+                // Cap emotional intimacy contribution if no in-person time
+                score -= (formValues.emotionalIntimacy * 0.15);
+                score += (4 * 0.15); // Only count up to 4 points
+            }
+
+            // Enhanced gender dynamics adjustments
+            if (formValues.userGender === "male" && formValues.partnerGender === "female") {
+                // Baumeister & Vohs (2004) adjustments
+                if (formValues.initiator === "self") score *= 0.9; // Male pursuing reduces score slightly
+                if (formValues.partnerResponse === "fast") score *= 1.1; // Female responsiveness increases
+            } 
+            else if (formValues.userGender === "female" && formValues.partnerGender === "male") {
+                // Jonason (2015) mate preference adjustments
+                if (formValues.initiator === "partner") score *= 1.05;
+            }
+            // Same-gender relationship adjustments (Gottman 2012)
+            else {
+                if (formValues.initiator === "equal") score *= 1.1;
+            }
+
+            // Special penalty/bonus factors
+            if (formValues.conflictFrequency > 7) score -= 0.5; // High conflict penalty
+            if (formValues.livingTogether === 1) score += 0.3; // Cohabitation bonus
+
+            // Cap score at 10
+            score = Math.min(10, Math.max(0, Number(score.toFixed(2))));
+
+            // Determine main relationship label
+            const mainLabel = relationshipLabels.find(label => 
+                score >= label.minScore && score < label.maxScore
+            );
+
+            // Display main result
+            document.getElementById("statusLabel").textContent = mainLabel.label;
+            document.getElementById("mainLabelImage").src = mainLabel.image;
+            document.getElementById("mainLabelImage").alt = mainLabel.label;
             
-            if (cond.field === 'initiator') {
-                desc = `Initiation: ${value === 'self' ? 'You' : 'They'} initiate most contact`;
-            }
-            else if (cond.field === 'partnerResponse') {
-                desc = `Response style: ${value === 'fast' ? 'Quick' : 'Slow'} responses`;
-            }
-            else if (cond.field === 'livingTogether') {
-                desc = `Living situation: ${value ? 'Co-habitating' : 'Separate residences'}`;
-            }
-            // Add more field-specific descriptions as needed
+            // Enhanced personalized explanation
+            let explanation = mainLabel.explanation;
+            explanation += `<p>Your score of <strong>${score}/10</strong> reflects:</p><ul>`;
             
-            caseExplanation += `<li>${desc}</li>`;
-        });
-        
-        caseExplanation += `</ul>`;
-        document.getElementById("specialCaseExplanation").innerHTML = caseExplanation;
-        document.getElementById("specialCaseResult").classList.remove("hidden");
-        currentResearch = specialCase.research;
-    }
+            if (formValues.timeTogether === 0) {
+                explanation += `<li>No shared time - physical absence limits bonding opportunities</li>`;
+            } else if (formValues.timeTogether < 5) {
+                explanation += `<li>Limited shared time (${formValues.timeTogether} hrs/week) - below bonding threshold</li>`;
+            } else if (formValues.timeTogether > 20) {
+                explanation += `<li>High shared time (${formValues.timeTogether} hrs/week) - strong commitment signal</li>`;
+            }
+            
+            if (formValues.futurePlans < 1) {
+                explanation += `<li>Minimal/No future planning - indicates short-term orientation</li>`;
+            } else if (formValues.futurePlans > 7) {
+                explanation += `<li>Concrete future plans - strong long-term commitment marker</li>`;
+            }
+            
+            if (formValues.emotionalIntimacy > 7) {
+                explanation += `<li>Strong emotional connection (${formValues.emotionalIntimacy}/10) - deep bonding present</li>`;
+            } else if (formValues.emotionalIntimacy > 4 && formValues.timeTogether === 0) {
+                explanation += `<li>Emotional connection without shared time - potential one-sided attachment</li>`;
+            }
+            
+            explanation += `</ul>`;
+            
+            document.getElementById("statusExplanation").innerHTML = explanation;
 
-    // Show results container
-    document.getElementById("resultContainer").style.display = "block";
-}
+            // Check for special cases (now with all 12 patterns)
+            const detectedCases = specialCases.filter(caseItem => {
+                return caseItem.conditions.every(condition => {
+                    const value = formValues[condition.field];
+                    switch (condition.op) {
+                        case ">": return value > condition.value;
+                        case "<": return value < condition.value;
+                        case "==": return value == condition.value;
+                        case ">=": return value >= condition.value;
+                        default: return false;
+                    }
+                });
+            });
 
-// Helper function for response rate calculation
-function calculateResponseRate(responseType) {
-    const rates = {
-        'fast': 90,  // 90% response rate
-        'medium': 60,
-        'slow': 20
-    };
-    return rates[responseType] || 50;
-}
+            // Display all detected special cases
+            if (detectedCases.length > 0) {
+                const specialCase = detectedCases[0]; // Showing first match (can extend to show all)
+                document.getElementById("specialCaseLabel").textContent = specialCase.name;
+                document.getElementById("specialCaseImage").src = specialCase.image;
+                document.getElementById("specialCaseImage").alt = specialCase.name;
+                
+                let caseExplanation = specialCase.explanation;
+                caseExplanation += `<p><strong>Pattern Indicators:</strong></p><ul>`;
+                
+                // Dynamic trigger explanations
+                specialCase.conditions.forEach(cond => {
+                    const value = formValues[cond.field];
+                    let desc = '';
+                    
+                    if (cond.field === 'initiator') {
+                        if (value === 'always_self') desc = `Initiation: You always initiate contact`;
+                        else if (value === 'always_partner') desc = `Initiation: They always initiate contact`;
+                        else desc = `Initiation: ${value === 'self' ? 'You' : 'They'} initiate most contact`;
+                    }
+                    else if (cond.field === 'partnerResponse') {
+                        desc = `Response style: ${value === 'fast' ? 'Quick' : 'Slow'} responses`;
+                    }
+                    else if (cond.field === 'livingTogether') {
+                        desc = `Living situation: ${value ? 'Co-habitating' : 'Separate residences'}`;
+                    }
+                    else if (cond.field === 'timeTogether') {
+                        desc = `Time together: ${value === 0 ? 'None' : value + ' hrs/week'}`;
+                    }
+                    else if (cond.field === 'sexFrequency') {
+                        desc = `Sex frequency: ${value === 0 ? 'Never' : value === 0.25 ? 'Rare' : value + 'x/week'}`;
+                    }
+                    // Add more field-specific descriptions as needed
+                    
+                    if (desc) caseExplanation += `<li>${desc}</li>`;
+                });
+                
+                caseExplanation += `</ul>`;
+                document.getElementById("specialCaseExplanation").innerHTML = caseExplanation;
+                document.getElementById("specialCaseResult").classList.remove("hidden");
+                currentResearch = specialCase.research;
+            } else {
+                document.getElementById("specialCaseResult").classList.add("hidden");
+            }
 
-function showResearch() {
-    document.getElementById("researchContent").textContent = currentResearch;
-    document.getElementById("researchInfo").classList.remove("hidden");
-}
-      function getHistoricalSexFrequency() {
-    // Implement based on your data storage
-    return []; 
-}
+            // Show results container
+            document.getElementById("resultContainer").style.display = "block";
+        }
 
-function calculateFrequencyDecline() {
-    const history = getHistoricalSexFrequency();
-    if (history.length < 2) return 0;
-    const current = parseFloat(document.getElementById("sexFrequency").value);
-    const peak = Math.max(...history);
-    return ((peak - current)/peak) * 100;
-}
+        // Helper function for response rate calculation
+        function calculateResponseRate(responseType) {
+            const rates = {
+                'fast': 90,  // 90% response rate
+                'medium': 60,
+                'slow': 20
+            };
+            return rates[responseType] || 50;
+        }
+
+        function showResearch() {
+            document.getElementById("researchContent").textContent = currentResearch;
+            document.getElementById("researchInfo").classList.remove("hidden");
+        }
+
+        function getHistoricalSexFrequency() {
+            // Implement based on your data storage
+            return []; 
+        }
+
+        function calculateFrequencyDecline() {
+            const history = getHistoricalSexFrequency();
+            if (history.length < 2) return 0;
+            const current = parseFloat(document.getElementById("sexFrequency").value);
+            const peak = Math.max(...history);
+            return ((peak - current)/peak) * 100;
+        }
     </script>
 </body>
 </html>
-
