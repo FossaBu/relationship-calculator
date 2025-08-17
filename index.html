@@ -636,6 +636,19 @@
                 (formValues.futurePlans * 0.2) +
                 (formValues.exclusive * 0.15)
             );
+            // Cap score at 10 with proper rounding
+        score = Math.min(10, Math.max(0, parseFloat(score.toFixed(2))));
+ 
+            // Ensure score doesn't exceed the maximum label range
+        const maxScore = Math.max(...relationshipLabels.map(label => label.maxScore));
+        if (score >= maxScore) {
+            score = maxScore - 0.01; // Just below the maximum to ensure we get the top label
+        }
+
+        // Find the appropriate label - now with guaranteed match
+        const mainLabel = relationshipLabels.find(label => 
+            score >= label.minScore && score < label.maxScore
+        ) || relationshipLabels[relationshipLabels.length - 1]; // Fallback to last label
 
             // Adjust weights based on directional behaviors
             // Texting weight adjustment based on initiation pattern
@@ -783,3 +796,4 @@
     </script>
 </body>
 </html>
+
