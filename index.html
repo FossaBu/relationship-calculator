@@ -415,15 +415,15 @@
             },
             
             {
-                name: "Friends with Benefits",
+                 name: "Friends with Benefits",
                 image: "/images/fwb.png",
                 conditions: [
-                    { field: "sexFrequency", op: ">=", value: 1 },
+                    { field: "sexFrequency", op: ">=", value: 1 }, // Changed from >2 to >=1 (1-2x/week)
                     { field: "emotionalIntimacy", op: "<", value: 4 },
                     { field: "socialMedia", op: "==", value: "none" },
                     { field: "exclusive", op: "==", value: 0 }
                 ],
-                explanation: "The combination of frequent physical intimacy with low emotional connection and no digital acknowledgment matches Hughes' (2005) FWB criteria, showing a primarily physical relationship.",
+                explanation: "The combination of regular physical intimacy with low emotional connection and no digital acknowledgment matches Hughes' (2005) FWB criteria, showing a primarily physical relationship.",
                 research: "Hughes et al. (2005). Friends with Benefits Relationships. Journal of Social and Personal Relationships, 22(5), 639-663."
             },
             
@@ -782,5 +782,6 @@
     </script>
 </body>
 </html>
+
 
 
