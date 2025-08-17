@@ -344,42 +344,42 @@
                 minScore: 0,
                 maxScore: 2,
                 label: "Acquaintances",
-                image: "/images/acquaintance.png",
+                image: "images/acquaintance.png",
                 explanation: "Your interactions show limited emotional investment or regular contact, matching what Dunbar (2017) identifies as 'peripheral relationships' in social networks."
             },
             {
                 minScore: 2,
                 maxScore: 4,
                 label: "Casual Dating",
-                image: "/images/casual.png",
+                image: "images/casual.png",
                 explanation: "Your moderate time together but low future orientation aligns with Vangelisti's (2004) criteria for early-stage non-committed relationships."
             },
             {
                 minScore: 4,
                 maxScore: 6,
                 label: "Developing Relationship",
-                image: "/images/developing.png",
+                image: "images/developing.png",
                 explanation: "The combination of regular contact and emerging emotional intimacy suggests what Sternberg (1986) calls 'limerence' - the formative stage of romantic bonding."
             },
             {
                 minScore: 6,
                 maxScore: 8,
                 label: "Committed Partnership",
-                image: "/images/committed.png",
+                image: "images/committed.png",
                 explanation: "Your high scores in shared activities and mutual planning demonstrate Rusbult's (1983) 'couple identity' formation characteristic of established pairs."
             },
             {
                 minScore: 8,
                 maxScore: 9,
                 label: "Serious Relationship",
-                image: "/images/serious.png",
+                image: "images/serious.png",
                 explanation: "The depth of emotional and practical interdependence matches Johnson's (2008) markers for securely attached long-term partnerships."
             },
             {
                 minScore: 9,
                 maxScore: 10,
                 label: "Life Partners",
-                image: "/images/lifepartners.png",
+                image: "images/lifepartners.png",
                 explanation: "Your comprehensive alignment across all dimensions reflects what Gottman (1993) identifies as the 'marital friendship' foundation of lifelong unions."
             }
         ];
@@ -388,7 +388,7 @@
         const specialCases = [
             {
                 name: "Stalker Pattern Warning",
-                image: "/images/stalker.png",
+                image: "images/stalker.png",
                 conditions: [
                     { field: "initiator", op: "==", value: "always_self" },
                     { field: "partnerResponse", op: "==", value: "slow" },
@@ -402,7 +402,7 @@
             
             {
                 name: "Leading Them On",
-                image: "/images/leading.png",
+                image: "images/leading.png",
                 conditions: [
                     { field: "initiator", op: "==", value: "always_partner" },
                     { field: "timeTogether", op: ">", value: 10 },
@@ -416,7 +416,7 @@
             
             {
                  name: "Friends with Benefits",
-                image: "/images/fwb.png",
+                image: "images/fwb.png",
                 conditions: [
                     { field: "sexFrequency", op: ">=", value: 1 }, // Changed from >2 to >=1 (1-2x/week)
                     { field: "emotionalIntimacy", op: "<", value: 4 },
@@ -429,7 +429,7 @@
             
             {
                 name: "Emotionally Unavailable Partner",
-                image: "/images/unavailable.png",
+                image: "images/unavailable.png",
                 conditions: [
                     { field: "timeTogether", op: ">", value: 15 },
                     { field: "emotionalIntimacy", op: "<", value: 3 },
@@ -440,7 +440,7 @@
             },  
             {
                 name: "Love Bombing",
-                image: "/images/love-bombing.png",
+                image: "images/love-bombing.png",
                 conditions: [
                     { field: "textsPerDay", op: ">", value: 50 },
                     { field: "relationshipDuration", op: "<", value: 90 },
@@ -451,7 +451,7 @@
             },
             {
                 name: "Breadcrumbing",
-                image: "/images/breadcrumbing.png",
+                image: "images/breadcrumbing.png",
                 conditions: [
                     { field: "partnerResponse", op: "==", value: "slow" },
                     { field: "initiator", op: "==", value: "self" },
@@ -462,7 +462,7 @@
             },
             {
                 name: "Trauma Bonded Relationship",
-                image: "/images/trauma-bond.png",
+                image: "images/trauma-bond.png",
                 conditions: [
                     { field: "emotionalIntimacy", op: ">", value: 8 },
                     { field: "conflictFrequency", op: ">", value: 7 },
@@ -474,7 +474,7 @@
             
             {
                 name: "Work Spouse Dynamic",
-                image: "/images/work-spouse.png",
+                image: "images/work-spouse.png",
                 conditions: [
                     { field: "timeTogether", op: ">", value: 20 },
                     { field: "sexFrequency", op: "<", value: 0.3 },
@@ -487,7 +487,7 @@
             
             {
                 name: "Cohabitation Trap",
-                image: "/images/cohab-trap.png",
+                image: "images/cohab-trap.png",
                 conditions: [
                     { field: "livingTogether", op: "==", value: 1 },
                     { field: "futurePlans", op: "<", value: 3 },
@@ -498,7 +498,7 @@
             },
             {
                 name: "Anxious-Avoidant Dance",
-                image: "/images/anxious-avoidant.png",
+                image: "images/anxious-avoidant.png",
                 conditions: [
                     { field: "initiator", op: "==", value: "self" },
                     { field: "emotionalIntimacy", op: ">", value: 7 },
@@ -509,7 +509,7 @@
             },
             {
                 name: "Digital Ghosting",
-                image: "/images/ghosting.png",
+                image: "images/ghosting.png",
                 conditions: [
                     { field: "partnerResponse", op: "==", value: "slow" },
                     { field: "responseRate", op: "<", value: 30 },
@@ -522,7 +522,7 @@
             
             {
                 name: "Romantic Burnout",
-                image: "/images/burnout.png",
+                image: "images/burnout.png",
                 conditions: [
                     { field: "relationshipDuration", op: ">", value: 1095 }, // 3+ years
                     { field: "conflictFrequency", op: "<", value: 3 },
@@ -534,7 +534,7 @@
             
             {
                 name: "Social Climber Alert",
-                image: "/images/social-climber.png",
+                image: "images/social-climber.png",
                 conditions: [
                     { field: "statusDisparity", op: "==", value: 1 },
                     { field: "exclusivitySpeed", op: ">", value: 7 },
@@ -782,6 +782,7 @@
     </script>
 </body>
 </html>
+
 
 
 
