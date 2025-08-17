@@ -127,6 +127,55 @@
                 width: 150px;
             }
         }
+        
+        .disclaimer {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #fff8f8;
+            border-top: 2px solid var(--primary);
+            font-size: 0.9em;
+            color: #666;
+        }
+        
+        .methodology {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+        }
+        
+        .methodology h3 {
+            color: var(--secondary);
+            margin-top: 0;
+        }
+        
+        .methodology h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .methodology ul {
+            padding-left: 20px;
+        }
+        
+        .methodology li {
+            margin-bottom: 8px;
+        }
+        
+        .citation {
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        
+        a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -335,6 +384,79 @@
             <h3>Research Basis</h3>
             <div id="researchContent"></div>
         </div>
+    </div>
+
+    <div class="disclaimer">
+        <strong>DISCLAIMER:</strong> Advanced Relationship Analyzer is not developed by clinical professionals and is for experimental purposes only. The results should not be considered as professional relationship advice.
+    </div>
+    
+    <div class="methodology">
+        <h3>Methodology</h3>
+        
+        <h4>Scoring Weights</h4>
+        <p>The relationship score is calculated using the following weighted factors:</p>
+        <ul>
+            <li><strong>Emotional Intimacy (25%):</strong> Self-reported rating of emotional connection (1-10 scale)</li>
+            <li><strong>Future Plans (20%):</strong> Discussion of long-term commitments (0=none, 5=vague, 10=concrete)</li>
+            <li><strong>Time Together (15%):</strong> Hours spent together per week</li>
+            <li><strong>Sex Frequency (15%):</strong> Physical intimacy frequency per week</li>
+            <li><strong>Exclusivity (15%):</strong> Official relationship status (0=no, 1=yes)</li>
+            <li><strong>Texting Frequency (10%):</strong> Adjusted based on initiation patterns</li>
+        </ul>
+        
+        <h4>Non-Linear Relationships</h4>
+        <p>Several factors have non-linear impacts on the score:</p>
+        <ul>
+            <li><strong>Texting Initiation:</strong> Scores are reduced when one partner always initiates contact</li>
+            <li><strong>Emotional Intimacy without Time:</strong> High emotional scores with no in-person time are discounted</li>
+            <li><strong>Conflict Frequency:</strong> High conflict (>7) reduces score by 0.5 points</li>
+            <li><strong>Cohabitation:</strong> Living together adds 0.3 points</li>
+        </ul>
+        
+        <h4>Gender Dynamics</h4>
+        <p>Adjustments based on research findings:</p>
+        <ul>
+            <li>Male-initiated pursuit in heterosexual relationships reduces score slightly (Baumeister & Vohs, 2004)</li>
+            <li>Female responsiveness increases score (Jonason et al., 2015)</li>
+            <li>Equal initiation in same-gender relationships increases score (Gottman et al., 2012)</li>
+        </ul>
+        
+        <h4>Research Citations</h4>
+        <ul>
+            <li>
+                <strong>Baumeister, R. F., & Vohs, K. D. (2004).</strong> Sexual Economics Theory
+                <div class="citation">Available at: <a href="https://journals.sagepub.com/doi/abs/10.1177/0146167203258839" target="_blank">https://journals.sagepub.com</a></div>
+            </li>
+            <li>
+                <strong>Gottman, J. M., et al. (2012).</strong> Same-Sex Couple Studies
+                <div class="citation">Available at: <a href="https://www.gottman.com/about/research/same-sex-couples/" target="_blank">https://www.gottman.com</a></div>
+            </li>
+            <li>
+                <strong>Jonason, P. K., et al. (2015).</strong> Mate Preferences
+                <div class="citation">Available at: <a href="https://www.sciencedirect.com/science/article/abs/pii/S0191886915000326" target="_blank">https://www.sciencedirect.com</a></div>
+            </li>
+            <li>
+                <strong>Hughes, M., et al. (2005).</strong> Friends with Benefits Relationships
+                <div class="citation">Available at: <a href="https://journals.sagepub.com/doi/10.1177/0265407505056437" target="_blank">https://journals.sagepub.com</a></div>
+            </li>
+            <li>
+                <strong>Mongeau, P. A., et al. (2013).</strong> Sexual Expectations in Dating
+                <div class="citation">Available at: <a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/pere.12005" target="_blank">https://onlinelibrary.wiley.com</a></div>
+            </li>
+            <li>
+                <strong>Levine, A., & Heller, R. (2010).</strong> Attachment Theory
+                <div class="citation">Available at: <a href="https://www.attachedthebook.com/" target="_blank">https://www.attachedthebook.com</a></div>
+            </li>
+        </ul>
+        
+        <h4>Special Case Detection</h4>
+        <p>Behavioral patterns are identified using combinations of factors:</p>
+        <ul>
+            <li><strong>Friends with Benefits:</strong> ≥1x sex/week + low emotional intimacy + no social media + non-exclusive</li>
+            <li><strong>Stalker Pattern:</strong> Always initiating + slow responses + high one-sided emotional investment</li>
+            <li><strong>Love Bombing:</strong> Excessive early communication + rapid future planning</li>
+            <li><strong>Emotionally Unavailable:</strong> High time together + low emotional intimacy</li>
+        </ul>
     </div>
 
     <script>
@@ -782,6 +904,7 @@
     </script>
 </body>
 </html>
+
 
 
 
