@@ -551,6 +551,25 @@
         ];
 
       function analyzeRelationship() {
+
+          // Form validation
+            const requiredFields = document.querySelectorAll('[required]');
+            let isValid = true;
+            
+            requiredFields.forEach(field => {
+                if (!field.value) {
+                    field.style.borderColor = 'red';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '';
+                }
+            });
+            
+            if (!isValid) {
+                alert('Please fill all required fields');
+                return;
+            }
+          
     // Gather all form values
     const formValues = {
         userGender: document.getElementById("userGender").value,
@@ -568,19 +587,25 @@
         breakupHistory: parseInt(document.getElementById("breakupHistory").value),
         livingTogether: parseInt(document.getElementById("livingTogether").value),
         statusDisparity: parseInt(document.getElementById("statusDisparity").value),
+        relationshipDuration: parseInt(document.getElementById("relationshipDuration").value),
         
         // Derived fields for special cases
       context: document.getElementById("relationshipContext")?.value || "personal",
     exclusivitySpeed: parseInt(document.getElementById("exclusivitySpeed")?.value) || 5,
     sexRoutine: parseInt(document.getElementById("sexRoutine")?.value) || 0,
-    socialMediaShowcasing: parseInt(document.getElementById("socialMediaShowcasing")?.value) ||
+    socialMediaShowcasing: parseInt(document.getElementById("socialMediaShowcasing").value) || 5,
         responseRate: calculateResponseRate(document.getElementById("partnerResponse").value),
         sexFrequencyDecline: 0, // You would track this over time
-        recentIntimacy: formValues.emotionalIntimacy > 5 ? 1 : 0
+        recentIntimacy: parseFloat(document.getElementById("emotionalIntimacy").value) > 5 ? 1 : 0
       
       
     };
 
+          // Adjust sexRoutine if sexFrequency is 0
+            if (formValues.sexFrequency === 0) {
+                formValues.sexRoutine = 0;
+            }
+          
     // Calculate base score with research-backed weights
     let score = (
         (formValues.timeTogether * 0.15) +
@@ -590,6 +615,12 @@
         (formValues.futurePlans * 0.2) +
         (formValues.exclusive * 0.15)
     );
+          // Adjust weights based on directional behaviors
+            if (formValues.initiator === "always_self" || formValues.initiator === "always_partner") {
+                score -= (formValues.textsPerDay * 0.08);
+            } else if (formValues.initiator !== "equal") {
+                score -= (formValues.textsPerDay * 0.05);
+            }
 
     // Enhanced gender dynamics adjustments
     if (formValues.userGender === "male" && formValues.partnerGender === "female") {
@@ -613,10 +644,10 @@
     // Cap score at 10
     score = Math.min(10, Math.max(0, Number(score.toFixed(2))));
 
-    // Determine main relationship label
-    const mainLabel = relationshipLabels.find(label => 
-        score >= label.minScore && score < label.maxScore
-    );
+    // Find appropriate label with fallback
+            const mainLabel = relationshipLabels.find(label => 
+                score >= label.minScore && score < label.maxScore
+            ) || relationshipLabels[relationshipLabels.length - 1];
 
     // Display main result
     document.getElementById("statusLabel").textContent = mainLabel.label;
@@ -626,7 +657,9 @@
     // Enhanced personalized explanation
     let explanation = mainLabel.explanation;
     explanation += `<p>Your score of <strong>${score}/10</strong> reflects:</p><ul>`;
-    
+
+    if (formValues.timeTogether === 0) {
+        explanation += `<li>No shared time - physical absence limits bonding</li>`;
     if (formValues.timeTogether < 5) {
         explanation += `<li>Limited shared time (${formValues.timeTogether} hrs/week) - below bonding threshold</li>`;
     } else if (formValues.timeTogether > 20) {
@@ -641,7 +674,9 @@
     
     if (formValues.emotionalIntimacy > 7) {
         explanation += `<li>Strong emotional connection (${formValues.emotionalIntimacy}/10) - deep bonding present</li>`;
-    }
+    } else if (formValues.emotionalIntimacy > 4 && formValues.timeTogether === 0) {
+                explanation += `<li>Emotional connection without shared time</li>`;
+            }
     
     explanation += `</ul>`;
     
@@ -699,6 +734,11 @@
     // Show results container
     document.getElementById("resultContainer").style.display = "block";
 }
+          // Event listeners
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('analyzeButton').addEventListener('click', analyzeRelationship);
+            document.getElementById('researchButton').addEventListener('click', showResearch);
+        });
 
 // Helper function for response rate calculation
 function calculateResponseRate(responseType) {
@@ -729,3 +769,4 @@ function calculateFrequencyDecline() {
     </script>
 </body>
 </html>
+
